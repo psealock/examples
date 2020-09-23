@@ -9,7 +9,6 @@
  * Register the JS.
  */
 function add_extension_register_script() {
-
 	if ( ! class_exists( 'Automattic\WooCommerce\Admin\Loader' ) || ! \Automattic\WooCommerce\Admin\Loader::is_admin_page() ) {
 		return;
 	}
@@ -24,7 +23,8 @@ function add_extension_register_script() {
 	wp_register_script(
 		'examples',
 		$script_url,
-		$script_asset['dependencies'],
+		// Force DependencyExtractionWebpackPlugin to add 'woocommerce-navigation'
+		array_merge( $script_asset['dependencies'], array( 'woocommerce-navigation' ) ),
 		$script_asset['version'],
 		true
 	);
