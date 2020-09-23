@@ -1,6 +1,6 @@
 # Examples
 
-A WooCommerce Admin Extension
+Extension to demonstrate slotFill WC Navigation items.
 
 ## Development
 
