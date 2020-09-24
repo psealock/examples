@@ -3,7 +3,7 @@ import { registerPlugin } from "@wordpress/plugins";
 const {
   WooNavigationMenu,
   WooNavigationItem,
-  RawItem: NavigationItem,
+  RawNavigationItem: NavigationItem,
 } = window.wc;
 
 const MyPlugin = () => {
@@ -32,3 +32,15 @@ const MyPlugin = () => {
 };
 
 registerPlugin("my-plugin", { render: MyPlugin });
+
+const MyOtherPlugin = () => {
+  return (
+    <WooNavigationItem menu="my-plugin-examples" item="example-3">
+      <a className="components-button" href="www.example.com/3">
+        Example 3
+      </a>
+    </WooNavigationItem>
+  );
+};
+
+registerPlugin("my-other-plugin", { render: MyOtherPlugin });
