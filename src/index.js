@@ -4,13 +4,12 @@ const { WooNavigationMenu, WooNavigationItem } = window.wc;
 
 const MyPlugin = () => {
   return (
-    <WooNavigationMenu menu="woocommerce">
-      <WooNavigationItem
-        item="example-1"
-        title="Examples"
-        navigateToMenu="my-plugin-examples"
-      />
-    </WooNavigationMenu>
+    <WooNavigationItem
+      menu="woocommerce"
+      item="example-1"
+      title="Examples"
+      navigateToMenu="my-plugin-examples"
+    />
   );
 };
 
@@ -20,9 +19,9 @@ registerPlugin("my-plugin", { render: MyPlugin });
 //   <>
 //     <WooNavigationMenu menu="woocommerce">
 //       <WooNavigationItem
-//         item="example-1"
-//         title="Examples"
-//         navigateToMenu="my-plugin-examples"
+// item="example-1"
+// title="Examples"
+// navigateToMenu="my-plugin-examples"
 //       />
 //     </WooNavigationMenu>
 //     <WooNavigationMenu menu="my-plugin-examples" parentMenu="woocommerce">
