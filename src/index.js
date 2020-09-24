@@ -12,7 +12,7 @@ const MyPlugin = () => {
       <WooNavigationItem
         menu="woocommerce"
         item="example-1"
-        title="Examples"
+        title="Examples 😜"
         navigateToMenu="my-plugin-examples"
       />
       <WooNavigationMenu menu="my-plugin-examples" parentMenu="woocommerce">
