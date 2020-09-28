@@ -55,9 +55,21 @@ function register_items() {
 	if ( method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_item' ) ) {
 		\Automattic\WooCommerce\Navigation\Menu::add_item(
 			array(
-				'id'         => 'paul-child',
-				'parent'     => 'paul',
-				'title'      => 'Paul Child',
+				'id'         => 'example-1',
+				'parent'     => 'examples-root',
+				'title'      => 'Example 1',
+				'capability' => 'view_woocommerce_reports',
+				'url'        => 'http//:www.google.com',
+			)
+		);
+	}
+
+	if ( method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_item' ) ) {
+		\Automattic\WooCommerce\Navigation\Menu::add_item(
+			array(
+				'id'         => 'example-2',
+				'parent'     => 'examples-root',
+				'title'      => 'Example 2',
 				'capability' => 'view_woocommerce_reports',
 				'url'        => 'http//:www.google.com',
 			)
