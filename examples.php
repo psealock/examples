@@ -41,4 +41,29 @@ function add_extension_register_script() {
 	wp_enqueue_style( 'examples' );
 }
 
+function register_items() {
+	if ( method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_category' ) ) {
+		\Automattic\WooCommerce\Navigation\Menu::add_category(
+			array(
+				'id'         => 'examples-root',
+				'title'      => 'Examples',
+				'capability' => 'view_woocommerce_reports',
+			)
+		);
+	}
+
+	if ( method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_item' ) ) {
+		\Automattic\WooCommerce\Navigation\Menu::add_item(
+			array(
+				'id'         => 'paul-child',
+				'parent'     => 'paul',
+				'title'      => 'Paul Child',
+				'capability' => 'view_woocommerce_reports',
+				'url'        => 'http//:www.google.com',
+			)
+		);
+	}
+}
+
+add_action( 'plugins_loaded', 'register_items' );
 add_action( 'admin_enqueue_scripts', 'add_extension_register_script' );

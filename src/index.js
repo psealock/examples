@@ -11,11 +11,16 @@ const MyPlugin = () => {
     <>
       <WooNavigationItem
         menu="woocommerce"
-        item="example-1"
+        item="examples-root"
         title="Examples 😜"
         navigateToMenu="my-plugin-examples"
       />
-      <WooNavigationMenu menu="my-plugin-examples" parentMenu="woocommerce">
+      {/*
+      <WooNavigationMenu
+        menu="my-plugin-examples"
+        parentMenu="woocommerce"
+        backButtonLabel="WooCommerce Home"
+      >
         <NavigationItem item="example-1">
           <a className="components-button" href="www.example.com/1">
             Example 1
@@ -26,7 +31,7 @@ const MyPlugin = () => {
             Example 2
           </a>
         </NavigationItem>
-      </WooNavigationMenu>
+      </WooNavigationMenu> */}
     </>
   );
 };
@@ -43,4 +48,4 @@ const MyOtherPlugin = () => {
   );
 };
 
-registerPlugin("my-other-plugin", { render: MyOtherPlugin });
+// registerPlugin("my-other-plugin", { render: MyOtherPlugin });
