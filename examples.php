@@ -54,6 +54,7 @@ function register_items() {
 			'title'      => 'Examples',
 			'capability' => 'view_woocommerce_reports',
 			'parent'     => 'woocommerce',
+			'is_top_level_category' => true,
 		)
 	);
 
