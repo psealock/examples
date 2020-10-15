@@ -20,45 +20,37 @@ function add_extension_register_script() {
 		: array( 'dependencies' => array(), 'version' => filemtime( $script_path ) );
 	$script_url = plugins_url( $script_path, __FILE__ );
 
+	error_log(print_r($script_asset['dependencies'], true));
+
 	wp_register_script(
 		'examples',
 		$script_url,
-		// Force DependencyExtractionWebpackPlugin to add 'woocommerce-navigation'
-		array_merge( $script_asset['dependencies'], array( 'woocommerce-navigation' ) ),
+		$script_asset['dependencies'],
 		$script_asset['version'],
 		true
 	);
 
-	wp_register_style(
-		'examples',
-		plugins_url( '/build/style.css', __FILE__ ),
-		// Add any dependencies styles may have, such as wp-components.
-		array(),
-		filemtime( dirname( __FILE__ ) . '/build/style.css' )
-	);
-
 	wp_enqueue_script( 'examples' );
-	wp_enqueue_style( 'examples' );
 }
 
 function register_items() {
 	if ( 
-		! method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_category' ) ||
-		! method_exists( '\Automattic\WooCommerce\Navigation\Menu', 'add_item' ) 
+		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_category' ) ||
+		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_item' ) 
 	) {
 		return;
 	}
-	\Automattic\WooCommerce\Navigation\Menu::add_category(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_category(
 		array(
 			'id'         => 'examples-root',
 			'title'      => 'Examples',
 			'capability' => 'view_woocommerce_reports',
 			'parent'     => 'woocommerce',
-			'is_top_level_category' => true,
+			'is_top_level' => true,
 		)
 	);
 
-	\Automattic\WooCommerce\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
 		array(
 			'id'         => 'example-1',
 			'parent'     => 'examples-root',
@@ -68,7 +60,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
 		array(
 			'id'         => 'example-2',
 			'parent'     => 'examples-root',
@@ -78,7 +70,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Navigation\Menu::add_category(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_category(
 		array(
 			'id'         => 'sub-menu',
 			'parent'     => 'examples-root',
@@ -88,7 +80,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
 		array(
 			'id'         => 'sub-menu-child-1',
 			'parent'     => 'sub-menu',
@@ -98,7 +90,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
 		array(
 			'id'         => 'sub-menu-child-2',
 			'parent'     => 'sub-menu',

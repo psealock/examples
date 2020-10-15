@@ -1,6 +1,5 @@
 import { registerPlugin } from "@wordpress/plugins";
-
-const { WooNavigationItem } = window.wc;
+import { WooNavigationItem } from "@woocommerce/navigation";
 
 const MyPlugin = () => {
   return (
