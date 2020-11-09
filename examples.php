@@ -35,22 +35,20 @@ function add_extension_register_script() {
 
 function register_items() {
 	if ( 
-		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_category' ) ||
-		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_item' ) 
+		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_plugin_category' ) ||
+		! method_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu', 'add_plugin_item' ) 
 	) {
 		return;
 	}
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_category(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_category(
 		array(
 			'id'         => 'examples-root',
 			'title'      => 'Examples',
 			'capability' => 'view_woocommerce_reports',
-			'parent'     => 'woocommerce',
-			'is_top_level' => true,
 		)
 	);
 
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_item(
 		array(
 			'id'         => 'example-1',
 			'parent'     => 'examples-root',
@@ -60,7 +58,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_item(
 		array(
 			'id'         => 'example-2',
 			'parent'     => 'examples-root',
@@ -70,17 +68,17 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_category(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_category(
 		array(
 			'id'         => 'sub-menu',
 			'parent'     => 'examples-root',
 			'title'      => 'Sub Menu',
 			'capability' => 'view_woocommerce_reports',
-			'backButtonLabel' => 'WooCommerce Examples',
+			'backButtonLabel' => 'Examples',
 		)
 	);
 
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_item(
 		array(
 			'id'         => 'sub-menu-child-1',
 			'parent'     => 'sub-menu',
@@ -90,7 +88,7 @@ function register_items() {
 		)
 	);
 
-	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_item(
+	\Automattic\WooCommerce\Admin\Features\Navigation\Menu::add_plugin_item(
 		array(
 			'id'         => 'sub-menu-child-2',
 			'parent'     => 'sub-menu',
