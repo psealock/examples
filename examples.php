@@ -9,18 +9,12 @@
  * Register the JS.
  */
 function add_extension_register_script() {
-	if ( ! class_exists( 'Automattic\WooCommerce\Admin\Loader' ) || ! \Automattic\WooCommerce\Admin\Loader::is_admin_page() ) {
-		return;
-	}
-
 	$script_path       = '/build/index.js';
 	$script_asset_path = dirname( __FILE__ ) . '/build/index.asset.php';
 	$script_asset      = file_exists( $script_asset_path )
 		? require( $script_asset_path )
 		: array( 'dependencies' => array(), 'version' => filemtime( $script_path ) );
 	$script_url = plugins_url( $script_path, __FILE__ );
-
-	error_log(print_r($script_asset['dependencies'], true));
 
 	wp_register_script(
 		'examples',
