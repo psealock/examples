@@ -9,13 +9,17 @@
  * Register the JS.
  */
 function add_extension_register_script() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
 	$script_path       = '/build/index.js';
 	$script_asset_path = dirname( __FILE__ ) . '/build/index.asset.php';
 	$script_asset      = file_exists( $script_asset_path )
 		? require( $script_asset_path )
 		: array( 'dependencies' => array(), 'version' => filemtime( $script_path ) );
 	$script_url = plugins_url( $script_path, __FILE__ );
-
+	
 	wp_register_script(
 		'examples',
 		$script_url,
