@@ -1,5 +1,19 @@
 import { registerPlugin } from "@wordpress/plugins";
 import { WooNavigationItem } from "@woocommerce/navigation";
+import { addFilter } from "@wordpress/hooks";
+
+const Container = () => <div>Hello World</div>;
+
+addFilter("woocommerce_admin_pages_list", "examples", (pages) => {
+  pages.push({
+    container: Container,
+    path: "/examples",
+    wpOpenMenu: "toplevel_page_woocommerce",
+    breadcrumbs: ["Example WC Admin Page"],
+  });
+
+  return pages;
+});
 
 const MyPlugin = () => {
   return (

@@ -23,7 +23,8 @@ function add_extension_register_script() {
 	wp_register_script(
 		'examples',
 		$script_url,
-		array_merge( array( WC_ADMIN_APP ), $script_asset['dependencies'] ),
+		// array_merge( array( WC_ADMIN_APP ), $script_asset['dependencies'] ),
+		$script_asset['dependencies'],
 		$script_asset['version'],
 		true
 	);
@@ -97,5 +98,21 @@ function register_items() {
 	);
 }
 
+function add_wc_admin_menu () {
+	wc_admin_register_page(
+		[
+			'id'     => 'example-wc-page',
+			'title'  => __( 'Examples WC Page', 'woocommerce-payments' ),
+			'path'   => '/examples',
+			'nav_args' => array(
+				'parent' => 'woocommerce',
+				'is_top_level' => true,
+				'menuId' => 'plugins',
+			),
+		]
+	);
+}
+
+add_action( 'admin_menu', 'add_wc_admin_menu' );
 add_action( 'plugins_loaded', 'register_items' );
 add_action( 'admin_enqueue_scripts', 'add_extension_register_script' );
