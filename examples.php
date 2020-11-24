@@ -23,8 +23,7 @@ function add_extension_register_script() {
 	wp_register_script(
 		'examples',
 		$script_url,
-		// array_merge( array( WC_ADMIN_APP ), $script_asset['dependencies'] ),
-		$script_asset['dependencies'],
+		array_merge( array( 'wp-element', 'wp-data', 'moment' ), $script_asset['dependencies'] ),
 		$script_asset['version'],
 		true
 	);
